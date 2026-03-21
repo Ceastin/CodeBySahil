@@ -8,11 +8,9 @@ public:
             for(int j=y;j<y+k;j++)
             {
                 int temp=grid[i][j];
-                cout<<grid[i][j]<<" "<<grid[x+k-fact][j]<<endl;
                 grid[i][j]=grid[x+k-fact][j];
                 grid[x+k-fact][j]=temp;
             }
-            cout<<endl;
         }
         return grid;
     }
