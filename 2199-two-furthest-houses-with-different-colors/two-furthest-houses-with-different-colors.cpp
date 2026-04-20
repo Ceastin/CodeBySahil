@@ -1,13 +1,24 @@
 class Solution {
 public:
     int maxDistance(vector<int>& colors) {
+        pair<int,int> f={colors[0],0},s={-1,-1};
         int ans=0;
-        for(int i=0;i<colors.size()-1;i++)
+        for(int i=0;i<colors.size();i++)
         {
-            for(int j=i+1;j<colors.size();j++)
+            if(f.first==colors[i])
             {
-                if(colors[i]!=colors[j])
-                ans=max(ans,abs(i-j));
+                if(s.first!=-1)
+                {
+                    ans=max(ans,abs(i-s.second));
+                }
+            }
+            else
+            {
+                if(s.first==-1)
+                {
+                    s={colors[i],i};
+                }
+                ans=max(ans,abs(i-f.second));   
             }
         }
         return ans;
